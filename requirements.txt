@@ -1,0 +1,19 @@
+# NETWATCH
+# Phase 1 - Foundation
+# Phase 2 - Network Discovery
+# Phase 3 - Port & Service Scanning
+# Phase 4 - DNS Analysis
+# Phase 5 - HTTP/HTTPS Analysis
+# Phase 6 - Network Traffic Analysis
+# Phase 7 - IDS / Security Detection
+# Phase 8 - Firewall Configuration Analysis
+# Phase 9 - Network Topology
+# Phase 10 - Routing Simulator / Educational Module
+# Phase 11 - Dashboard
+
+dnspython>=2.7,<3.0
+scapy>=2.6,<3.0
+networkx>=3.5,<4.0
+matplotlib>=3.10,<4.0
+flask>=3.1,<4.0
+reportlab>=4.4,<5.0

@@ -1,0 +1,33 @@
+{
+    "application": {
+        "name": "NETWATCH",
+        "version": "0.7.0",
+        "environment": "development"
+    },
+    "network": {
+        "authorized_assessment_only": true
+    },
+    "scanning": {
+        "timeout": 1.0,
+        "max_workers": 20,
+        "submission_delay": 0.02,
+        "max_ports_per_scan": 65535
+    },
+    "dns": {
+        "timeout": 3.0,
+        "lifetime": 5.0
+    },
+    "http": {
+        "timeout": 5.0,
+        "max_redirects": 5
+    },
+    "traffic": {
+        "capture_duration": 10.0,
+        "packet_count": 1000,
+        "max_capture_duration": 300,
+        "max_packet_count": 100000
+    },
+    "firewall": {
+        "broad_port_threshold": 1000
+    }
+}

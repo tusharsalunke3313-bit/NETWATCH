@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NETWATCH Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <header class="topbar">
+
+        <div>
+            <div class="brand">
+                NETWATCH
+            </div>
+
+            <div class="subtitle">
+                Network Monitoring & Security Platform
+            </div>
+        </div>
+
+        <div class="header-status">
+            <span
+                id="connection-status"
+                class="status-dot"
+            ></span>
+
+            <span id="connection-text">
+                Dashboard connected
+            </span>
+        </div>
+
+    </header>
+
+
+    <main class="content">
+
+        <section class="hero">
+
+            <div>
+                <p class="eyebrow">
+                    NETWORK SECURITY DASHBOARD
+                </p>
+
+                <h1>
+                    Network Monitoring &
+                    Security Platform
+                </h1>
+
+                <p class="hero-text">
+                    Live visualization of the current
+                    NETWATCH assessment session.
+                </p>
+            </div>
+
+            <div class="assessment-badge">
+                <span class="badge-label">
+                    Assessment Mode
+                </span>
+
+                <strong id="assessment-mode">
+                    AUTHORIZED NETWORKS ONLY
+                </strong>
+            </div>
+
+        </section>
+
+
+        <section class="metric-grid">
+
+            <article class="metric-card">
+
+                <span class="metric-label">
+                    Devices Discovered
+                </span>
+
+                <strong
+                    id="devices-count"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-label">
+                    Open Ports
+                </span>
+
+                <strong
+                    id="ports-count"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-label">
+                    Network Alerts
+                </span>
+
+                <strong
+                    id="alerts-count"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="metric-card danger-card">
+
+                <span class="metric-label">
+                    High Severity Alerts
+                </span>
+
+                <strong
+                    id="high-alerts-count"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-label">
+                    Traffic Packets
+                </span>
+
+                <strong
+                    id="traffic-count"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+
+            <article class="metric-card">
+
+                <span class="metric-label">
+                    Traffic Bytes
+                </span>
+
+                <strong
+                    id="traffic-bytes"
+                    class="metric-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+        </section>
+
+
+        <section class="dashboard-grid">
+
+
+            <article class="panel panel-large">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            NETWORK
+                        </span>
+
+                        <h2>
+                            Network Devices
+                        </h2>
+                    </div>
+
+                    <span
+                        id="network-name"
+                        class="panel-meta"
+                    >
+                        No discovery
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+                            <th>IP</th>
+                            <th>Hostname</th>
+                            <th>MAC</th>
+                            <th>Status</th>
+                            <th>Response</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="devices-table">
+
+                        <tr>
+                            <td
+                                colspan="5"
+                                class="empty-state"
+                            >
+                                No network discovery data
+                                available.
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            SCANNING
+                        </span>
+
+                        <h2>
+                            Open Services
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="ports-list"
+                    class="list"
+                >
+
+                    <div class="empty-state">
+                        No port scan performed.
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="panel panel-large">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            DETECTION
+                        </span>
+
+                        <h2>
+                            Security Alerts
+                        </h2>
+                    </div>
+
+                    <span class="panel-meta">
+                        Observational
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                        <tr>
+                            <th>Severity</th>
+                            <th>Type</th>
+                            <th>Source</th>
+                            <th>Timestamp</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="alerts-table">
+
+                        <tr>
+                            <td
+                                colspan="4"
+                                class="empty-state"
+                            >
+                                No IDS alerts available.
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <p class="panel-note">
+                    Alerts represent observed rule matches
+                    and are not proof of malicious intent.
+                </p>
+
+            </article>
+
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            TRAFFIC
+                        </span>
+
+                        <h2>
+                            Traffic Statistics
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="traffic-bars"
+                    class="traffic-bars"
+                >
+
+                    <div class="empty-state">
+                        No traffic analysis performed.
+                    </div>
+
+                </div>
+
+
+                <div class="traffic-summary">
+
+                    <div>
+                        <span>
+                            Packets
+                        </span>
+
+                        <strong id="traffic-packets-small">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            Bytes
+                        </span>
+
+                        <strong id="traffic-bytes-small">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="panel panel-large">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            TOPOLOGY
+                        </span>
+
+                        <h2>
+                            Network Topology
+                        </h2>
+                    </div>
+
+                    <span
+                        id="topology-status"
+                        class="panel-meta"
+                    >
+                        Not generated
+                    </span>
+
+                </div>
+
+
+                <div class="topology-container">
+
+                    <img
+                        id="topology-image"
+                        src="{{ url_for('topology_image') }}"
+                        alt="NETWATCH network topology"
+                    >
+
+                    <div
+                        id="topology-empty"
+                        class="topology-empty"
+                    >
+                        Generate or export a topology
+                        from NETWATCH to display it here.
+                    </div>
+
+                </div>
+
+
+                <div class="topology-stats">
+
+                    <div>
+                        <span>
+                            Nodes
+                        </span>
+
+                        <strong id="topology-nodes">
+                            0
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            Connections
+                        </span>
+
+                        <strong id="topology-connections">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            FIREWALL
+                        </span>
+
+                        <h2>
+                            Firewall Findings
+                        </h2>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="firewall-list"
+                    class="list"
+                >
+
+                    <div class="empty-state">
+                        No firewall analysis performed.
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <section class="footer-note">
+
+            <strong>
+                NETWATCH
+            </strong>
+
+            <span>
+                Read-only visualization of the current
+                authorized security assessment session.
+            </span>
+
+            <span id="last-refresh">
+                Waiting for data...
+            </span>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script
+    src="{{ url_for('static', filename='dashboard.js') }}"
+></script>
+
+</body>
+</html>

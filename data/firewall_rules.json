@@ -1,0 +1,60 @@
+{
+    "name": "NETWATCH Sample Firewall Configuration",
+    "description": "Deterministic sample rules for authorized analysis and demonstration.",
+    "rules": [
+        {
+            "rule_id": "FW-001",
+            "source": "ANY",
+            "destination": "ANY",
+            "port": "22",
+            "protocol": "TCP",
+            "action": "ALLOW",
+            "description": "SSH administration"
+        },
+        {
+            "rule_id": "FW-002",
+            "source": "192.168.0.0/24",
+            "destination": "ANY",
+            "port": "80",
+            "protocol": "TCP",
+            "action": "ALLOW",
+            "description": "Internal HTTP access"
+        },
+        {
+            "rule_id": "FW-003",
+            "source": "ANY",
+            "destination": "ANY",
+            "port": "23",
+            "protocol": "TCP",
+            "action": "DENY",
+            "description": "Block Telnet"
+        },
+        {
+            "rule_id": "FW-004",
+            "source": "ANY",
+            "destination": "ANY",
+            "port": "443",
+            "protocol": "TCP",
+            "action": "ALLOW",
+            "description": "HTTPS access"
+        },
+        {
+            "rule_id": "FW-005",
+            "source": "ANY",
+            "destination": "ANY",
+            "port": "1000-65535",
+            "protocol": "TCP",
+            "action": "ALLOW",
+            "description": "Broad TCP access"
+        },
+        {
+            "rule_id": "FW-006",
+            "source": "ANY",
+            "destination": "ANY",
+            "port": "443",
+            "protocol": "TCP",
+            "action": "ALLOW",
+            "description": "Duplicate HTTPS rule"
+        }
+    ]
+}
